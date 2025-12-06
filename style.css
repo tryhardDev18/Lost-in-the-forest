@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+}
+
+body {
+    background-color: rgb(51, 51, 51);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+#mainCanvas {
+    width: 80%;
+    margin: auto;
+    height: 500px;
+    background-color: black;
+}
+
+#answers {
+    width: 80%;
+    margin: auto;
+    height: 150px;
+}
+
+#textbox {
+    height: 100px;
+    border: 1px solid rgb(52, 85, 65);
+    margin: auto;
+    width: 80%;
+    color: white;
+    background-color: rgb(52, 85, 65);
+}
+
+#textbox p {
+    margin: 20px;
+    font-size: 20px;
+}
+
+#f1st {
+    width: 49.7%;
+    border: 1px solid white;
+    height: 73px;
+    display: inline-block;
+    cursor: pointer;
+    background-color: rgb(79, 148, 107);
+}
+
+#f1st:hover {
+    background-color: rgb(26, 59, 39);
+}
+
+#f1st p {
+    margin: 10px;
+}
+
+#s2nd {
+    width: 49.7%;
+    border: 1px solid white;
+    display: inline-block;
+    height: 73px;
+    cursor: pointer;
+    background-color: rgb(79, 148, 107);
+}
+
+#s2nd:hover {
+    background-color: rgb(26, 59, 39);
+}
+
+#s2nd p {
+    margin: 10px;
+}
+
+#t3rd {
+    border: 1px solid white;
+    display: inline-block;
+    width: 49.7%;
+    height: 73px;
+    cursor: pointer;
+    background-color: rgb(79, 148, 107);
+}
+
+#t3rd:hover {
+    background-color: rgb(26, 59, 39);
+}
+
+#t3rd p {
+    margin: 10px;
+}
+
+#f4th {
+    border: 1px solid white;
+    display: inline-block;
+    width: 49.7%;
+    height: 73px;
+    margin-top: 3px;
+    cursor: pointer;
+    background-color: rgb(79, 148, 107);
+}
+
+#f4th:hover {
+    background-color: rgb(26, 59, 39);
+}
+
+#f4th p {
+    margin: 10px;
+}
+
+#answers p {
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    user-select: none;
+}
+
+#start {
+    margin: auto;
+    font-size: 20px;
+    margin-top: 300px;
+    background-color: rgb(52, 85, 65);
+    width: 50%;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    height: 200px;
+    line-height: 200px;
+    font-size: 80px;
+    font-weight: bolder;
+}
+
+#start:hover {
+    background-color: rgb(49, 80, 61);
+}
+
+#game {
+    background-color: black;
+    width: 100%;
+    margin: auto;
+}
+
+#header {
+    width: 100%;
+    background-color: rgb(52, 85, 65);
+    user-select: none;
+}
+
+#mainTxt {               /* some inner spacing */
+    width: 100%;
+    max-height: 200px;           /* fix a reasonable height */
+    overflow-y: hidden;            /* allow scrolling if text is longer */
+    white-space: normal;         /* allow wrapping */
+    overflow-wrap: break-word;   /* break long words */
+    word-wrap: break-word;       /* older browser support */
+    line-height: 1.5;
+}
