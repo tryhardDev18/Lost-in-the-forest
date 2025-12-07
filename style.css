@@ -154,3 +154,77 @@ h1 {
     word-wrap: break-word;       /* older browser support */
     line-height: 1.5;
 }
+
+#footer {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    word-spacing: 1vw;
+    transition: .5s;
+    line-height: 150px;
+}
+
+#github {
+    cursor: pointer;
+    transition: .2s;
+}
+
+#linkedin {
+    cursor: pointer;
+    transition: .2s;
+}
+
+#tiktok {
+    cursor: pointer;
+    transition: .2s;
+}
+
+#github:hover {
+    color: rgb(179, 179, 179);
+}
+
+#linkedin:hover {
+    color: rgb(179, 179, 179);
+}
+
+#tiktok:hover {
+    color: rgb(179, 179, 179);
+}
+
+#smallscreentxt {
+    display: none;
+}
+
+@media (max-width: 1753px) {
+    #answers {
+        margin: auto;
+    }
+    #f1st {
+        width: 20%;
+        font-size: 14px;
+    }
+    #s2nd {
+        width: 20%;
+        font-size: 14px;
+    }
+    #t3rd {
+        width: 20%;
+        font-size: 14px;
+    }
+
+    #f4th {
+        width: 20%;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1200px) {
+    #main {
+        display: none;
+    }
+
+    #smallscreentxt {
+        display: block;
+    }
+}

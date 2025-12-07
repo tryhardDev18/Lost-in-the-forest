@@ -11,7 +11,12 @@ const an1 = document.getElementById("1st")
 const an2 = document.getElementById("2nd")
 const an3 = document.getElementById("3rd")
 const an4 = document.getElementById("4th")
+const footer = document.getElementById("footer")
+const github = document.getElementById("github")
+const linkedin = document.getElementById("linkedin")
+const tiktok = document.getElementById("tiktok")
 
+footer.style.display = "none"
 main.style.display = "none"
 
 
@@ -245,9 +250,394 @@ const scenes = {
       { text: "Turn around → go back to the cabin", next: "cabin" },
       { text: "", next: "" },
       { text: "", next: "" }
-    ]
+    ],
   },
-  // ...continue defining all other scenes like restTree, lookAround, insideCabin, windowPeek, carryLantern, followBranches, forestpath, higherTree, stoneClue
+
+    windowPeek: {
+    background: "cabinwindow",
+    text: "You try to look through the windows but the curtains are blocking your view.",
+    choices: [
+      { text: "Open the door → go inside the cabin", next: "insideCabin" },
+      { text: "Go back → stand at the entrance of the cabin", next: "entrancecabin" },
+      { text: "", next: "" },
+      { text: "", next: "" }
+    ],
+  },
+
+    insideCabin: {
+    background: "insidecabin",
+    text: "The cabin is small but dry. A table, some shelves, and a single closed door leading deeper inside. The place feels strangely warmer, like someone was here recently.",
+    choices: [
+      { text: "Look at the table → scratched marks", next: "table" },
+      { text: "Look at the shelves → old objects", next: "shelves" },
+      { text: "Try the door → locked", next: "doorLocked" },
+      { text: "Sit and rest → slight memory flash", next: "cabinRest" }
+    ],
+  },
+
+    table: {
+    background: "table",
+    text: "You see scratches, maybe someone carved a symbol here.",
+    choices: [
+      { text: "Keep exploring → examine other things", next: "insideCabin" },
+      { text: "Sit and rest → slight memory flash", next: "cabinRest" },
+      { text: "", next: "" },
+      { text: "", next: "" }
+    ],
+  },
+
+    shelves: {
+    background: "shelves",
+    text: "Old jars, Dusty bottle, Some books and an old camera. Nothing useful...",
+    choices: [
+      { text: "Keep exploring → examine other things", next: "insideCabin" },
+      { text: "Sit and rest → slight memory flash", next: "cabinRest" },
+      { text: "", next: "" },
+      { text: "", next: "" }
+    ],
+  },
+
+    doorLocked: {
+    background: "doorlocked",
+    text: "It’s locked. Something heavy might be behind it.",
+    choices: [
+      { text: "Keep exploring → examine other things", next: "insideCabin" },
+      { text: "Sit and rest → slight memory flash", next: "cabinRest" },
+      { text: "", next: "" },
+      { text: "", next: "" }
+    ],
+  },
+
+    cabinRest: {
+    background: "cabinrest",
+    text: "Your head hurts. A blurry memory tries to surface, then disappears. Then a sudden click comes from the closed door, like it unlocked itself…",
+    choices: [
+      { text: "Keep exploring → examine other things", next: "insideCabin1" },
+      { text: "Examine the door → see what's inside", next: "insideDoor" },
+      { text: "", next: "" },
+      { text: "", next: "" }
+    ],
+  },
+
+    insideCabin1: {
+    background: "insidecabin",
+    text: "The cabin is small but dry. A table, some shelves, and a single closed door leading deeper inside. The place feels strangely warmer, like someone was here recently.",
+    choices: [
+      { text: "Look at the table → scratched marks", next: "table" },
+      { text: "Look at the shelves → old objects", next: "shelves" },
+      { text: "Try the door → see what's inside", next: "insideDoor" },
+      { text: "Sit and rest → slight memory flash", next: "cabinRest" }
+    ],
+  },
+
+    cabinRest1: {
+    background: "cabinrest",
+    text: "You rest. Maybe it's best to examine the basement?",
+    choices: [
+      { text: "Keep exploring → examine other things", next: "insideCabin2" },
+      { text: "Examine the door → see what's inside", next: "insideDoor" },
+      { text: "", next: "" },
+      { text: "", next: "" }
+    ],
+  },
+
+    insideDoor: {
+    background: "basement",
+    text: "The door creaks open into a narrow hallway lit only by a weak lantern. Dust floats in the air. Wooden stairs lead downward into darkness. A cold breeze rises from below, carrying a faint smell of damp earth.",
+    choices: [
+      { text: "Go back → you feel scared?", next: "insideCabin2" },
+      { text: "Examine the basement → see what's inside", next: "basement" },
+      { text: "", next: "" },
+      { text: "", next: "" }
+    ],
+  },
+
+    insideCabin2: {
+    background: "insidecabin",
+    text: "The cabin is small but dry. A table, some shelves, and a single closed door leading deeper inside. The place feels strangely warmer, like someone was here recently.",
+    choices: [
+      { text: "Go back to the door → see what's inside", next: "insideDoor" },
+      { text: "Sit and rest → rest more", next: "cabinRest1" },
+      { text: "", next: "" },
+      { text: "", next: "" }
+    ],
+  },
+
+    basement: {
+    background: "basement1",
+    text: "The basement is small and empty except for an old table. On it lies a single item covered in dust. The air down here feels colder than upstairs.",
+    choices: [
+      { text: "Look at the item", next: "itemtake" },
+      { text: "Check the corners", next: "cornercheck" },
+      { text: "Look behind the table", next: "behindtable" },
+      { text: "Take a moment to think", next: "clearHead" }
+    ],
+  },
+
+    itemtake: {
+    background: "basementcompass",
+    text: "It’s a compass. The needle keeps pointing in one direction, no matter how you move it.",
+    choices: [
+      { text: "Take the compass", next: "backoutside" },
+      { text: "Hold it tightly", next: "backoutside" },
+      { text: "Put it in your pocket", next: "backoutside" },
+      { text: "Head back upstairs", next: "backoutside" }
+    ],
+  },
+
+    cornercheck: {
+    background: "basementcompass",
+    text: "Just old stones and dirt… but you notice the compass on the table.",
+    choices: [
+      { text: "Take the compass", next: "backoutside" },
+      { text: "Hold it tightly", next: "backoutside" },
+      { text: "Put it in your pocket", next: "backoutside" },
+      { text: "Head back upstairs", next: "backoutside" }
+    ],
+  },
+
+    behindtable: {
+    background: "basementcompass",
+    text: "Nothing there — just a compass on the table.",
+    choices: [
+      { text: "Take the compass", next: "backoutside" },
+      { text: "Hold it tightly", next: "backoutside" },
+      { text: "Put it in your pocket", next: "backoutside" },
+      { text: "Head back upstairs", next: "backoutside" }
+    ],
+  },
+
+    clearHead: {
+    background: "basementcompass",
+    text: "Your head clears a little. You notice a compass on the table.",
+    choices: [
+      { text: "Take the compass", next: "backoutside" },
+      { text: "Hold it tightly", next: "backoutside" },
+      { text: "Put it in your pocket", next: "backoutside" },
+      { text: "Head back upstairs", next: "backoutside" }
+    ],
+  },
+
+    backoutside: {
+    background: "cabin",
+    text: "You step out of the cabin. The forest feels different now—quieter, almost expectant. The compass in your hand points steadily north. Somewhere along that direction, your way forward awaits.",
+    choices: [
+      { text: "Follow the compass north → deeper into the forest", next: "ontheway" },
+      { text: "Walk cautiously along the cabin edge → check for hidden paths", next: "cabinedge" },
+      { text: "Climb a nearby tree → scout ahead", next: "scout" },
+      { text: "Rest a moment → gather your thoughts", next: "gatherthoughts" }
+    ],
+  },
+
+    ontheway: {
+    background: "ontheway",
+    text: "The path winds between tall pines. Sunlight barely reaches the ground. A faint clearing appears ahead.",
+    choices: [
+      { text: "Follow the compass", next: "follow" },
+      { text: "Go back", next: "backoutside" },
+      { text: "", next: "" },
+      { text: "", next: "" }
+    ],
+  },
+
+    cabinedge: {
+    background: "ontheway",
+    text: "You notice faint footprints leading in the same direction as the compass. Following them confirms you’re on the right path.",
+    choices: [
+      { text: "Follow footprints", next: "follow" },
+      { text: "Go back", next: "backoutside" },
+      { text: "", next: "" },
+      { text: "", next: "" }
+    ],
+  },
+
+    scout: {
+    background: "scout",
+    text: "From the top, you see a break in the forest canopy: a small clearing northward. That’s where the compass is pointing.",
+    choices: [
+      { text: "Follow the compass", next: "follow" },
+      { text: "Go back", next: "backoutside" },
+      { text: "", next: "" },
+      { text: "", next: "" }
+    ],
+  },
+
+    gatherthoughts: {
+    background: "gatherthoughts",
+    text: "You feel your memory returning in flashes—enough to know the compass points toward something important.",
+    choices: [
+      { text: "Follow the compass", next: "follow" },
+      { text: "Go back", next: "backoutside" },
+      { text: "", next: "" },
+      { text: "", next: "" }
+    ],
+  },
+
+    follow: {
+    background: "shadow",
+    text: "As you step into the clearing, the shadow emerges from the trees. It stretches and twists unnaturally, always just at the edge of your vision. The forest itself seems alive, pushing you forward. You feel an ominous, threatning energy.",
+    choices: [
+      { text: "ApproachW̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "approach" },
+      { text: "W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "approach" },
+      { text: "W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "approach" },
+      { text: "W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "approach" }
+    ],
+  },
+
+    approach: {
+    background: "shadowcloser",
+    text: "RUNW̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝ ",
+    choices: [
+      { text: "RUN W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "run" },
+      { text: "RUN W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "run" },
+      { text: "RUN W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "run" },
+      { text: "RUN W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "run" }
+    ],
+  },
+
+    run: {
+    background: "branches2",
+    text: "RUNW̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝ ",
+    choices: [
+      { text: "RUN W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "run1" },
+      { text: "RUN W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "run1" },
+      { text: "RUN W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "run1" },
+      { text: "RUN W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "run1" }
+    ],
+  },
+
+    run1: {
+    background: "ontheway1",
+    text: "RUNW̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝ ",
+    choices: [
+      { text: "RUN W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "run2" },
+      { text: "RUN W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "run2" },
+      { text: "RUN W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "run2" },
+      { text: "RUN W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "run2" }
+    ],
+  },
+
+    run1: {
+    background: "glowend",
+    text: "YOU SEE THE END OF THE FOREST W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝ ",
+    choices: [
+      { text: "GO IN THE LIGHTW̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "wakeup" },
+      { text: "GO IN THE LIGHTW̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "wakeup" },
+      { text: "GO IN THE LIGHTW̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "wakeup" },
+      { text: "GO IN THE LIGHTW̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝W̶̢̌ę̷̈́ ̸̮̀S̸̪̓è̸̢ẽ̵ͅ ̷̢́Ỷ̴͉ö̸͎́ủ̶͉.̶̗͝", next: "wakeup" }
+    ],
+  },
+
+    wakeup: {
+    background: "hospital",
+    text: "A blinding white light surrounds you. The forest, the shadow, the chase… it all fades. You feel weight on your body, the steady beep of a heart monitor, the soft hum of machines. Blinking, you realize: you’re lying in a hospital bed.",
+    choices: [
+      { text: "Next", next: "wakeup1" },
+      { text: "Next", next: "wakeup1" },
+      { text: "", next: "wakeup" },
+      { text: "", next: "wakeup" }
+    ],
+  },
+
+    wakeup1: {
+    background: "hospital",
+    text: "The smell of antiseptic fills the air. Sunlight filters through the blinds. You remember… nothing at first. Then flashes: the cabin, the compass, the forest.",
+    choices: [
+      { text: "Next", next: "wakeup2" },
+      { text: "Back", next: "wakeup" },
+      { text: "", next: "wakeup" },
+      { text: "", next: "wakeup" }
+    ],
+  },
+
+    wakeup2: {
+    background: "hospital",
+    text: "Somewhere in the back of your mind, you understand: it was all a dream, or something like it—a reflection of your memory trying to return. You were in a car crash. You have been in a coma for the past 3 weeks...",
+    choices: [
+      { text: "Next", next: "aftermath" },
+      { text: "Back", next: "wakeup1" },
+      { text: "", next: "wakeup" },
+      { text: "", next: "wakeup" }
+    ],
+  },
+
+    aftermath: {
+    background: "building",
+    text: "After the doctors send you home you go to a therapist looking for answers.",
+    choices: [
+      { text: "Next", next: "aftermath1" },
+      { text: "Back", next: "wakeup2" },
+      { text: "", next: "wakeup" },
+      { text: "", next: "wakeup" }
+    ],
+  },
+
+    aftermath1: {
+    background: "therapist",
+    text: "therapist: The forest you experienced in your mind represents the unknown and disoriented state of your subconscious while you were in a coma. Waking up in a strange place, with no memory, mirrors the disorientation and confusion many patients feel when emerging from long unconscious states.",
+    choices: [
+      { text: "Next", next: "aftermath2" },
+      { text: "Back", next: "aftermath" },
+      { text: "", next: "wakeup" },
+      { text: "", next: "wakeup" }
+    ],
+  },
+
+    aftermath2: {
+    background: "therapist",
+    text: "The cabin symbolizes a part of your psyche seeking safety and structure—a familiar anchor in the chaotic mental landscape. Exploring the cabin and basement reflects the mind trying to retrieve fragmented memories, sorting through stored experiences and personal history.",
+    choices: [
+      { text: "Next", next: "aftermath3" },
+      { text: "Back", next: "aftermath1" },
+      { text: "", next: "wakeup" },
+      { text: "", next: "wakeup" }
+    ],
+  },
+
+    aftermath3: {
+    background: "therapist",
+    text: "The compass is your internal guidance system, an intuitive push from your subconscious, directing you toward clarity and coherence as your brain reconstructs your sense of self.",
+    choices: [
+      { text: "Next", next: "aftermath4" },
+      { text: "Back", next: "aftermath2" },
+      { text: "", next: "wakeup" },
+      { text: "", next: "wakeup" }
+    ],
+  },
+
+    aftermath4: {
+    background: "therapist",
+    text: "The shadow chasing you is particularly significant—it represents lost memories and unresolved thoughts pressing on your consciousness. The chase is not meant to harm you, but to motivate your mind to reconnect with those fragments, a symbolic process of reintegration.",
+    choices: [
+      { text: "Next", next: "aftermath5" },
+      { text: "Back", next: "aftermath3" },
+      { text: "", next: "wakeup" },
+      { text: "", next: "wakeup" }
+    ],
+  },
+
+    aftermath5: {
+    background: "therapist",
+    text: "Finally, stepping into the light and waking in the hospital represents the return to reality, where your cognitive and sensory systems re-engage with the world. The lingering sense of the forest reflects the subconscious imprint of trauma and memory: even though you’ve awoken physically, the mind’s journey through disorientation leaves a subtle echo.”",
+    choices: [
+      { text: "Next", next: "ending" },
+      { text: "Back", next: "aftermath4" },
+      { text: "", next: "wakeup" },
+      { text: "", next: "wakeup" }
+    ],
+  },
+
+    aftermath5: {
+    background: "ending",
+    text: "If you enjoyed this story check out my tiktok, github or linkedIn :)",
+    choices: [
+      { text: "Thanks for playing!", next: "" },
+      { text: "Thanks for playing!", next: "" },
+      { text: "Thanks for playing!", next: "" },
+      { text: "Thanks for playing!", next: "" }
+    ],
+  },
+
 };
 
 
@@ -300,19 +690,24 @@ FourthAn.addEventListener("click", () => {
 })
 
 
-
-
-
 function startGame() {
-    start.style.display = "none"
-    main.style.display = "block"
-    main.style.transition = ".5s"
-    renderScene("lvl1")
+    start.style.display = "none";
+    main.style.display = "block";
+    main.style.transition = ".5s";
+    footer.style.display = "block"
+    currentScene = "lvl1"
+    renderScene(currentScene)
+    lSfx("sfx/ambience.wav")
 }
 
+github.addEventListener("click", () => {
+  window.open("https://github.com/tryhardDev18")
+})
 
+linkedin.addEventListener("click", () => {
+  window.open("https://www.linkedin.com/in/luka-ilashvili-32884039b/")
+})
 
-    // an1.innerText = ""
-    // an2.innerText = ""
-    // an3.innerText = ""
-    // an4.innerText = ""
+tiktok.addEventListener("click", () => {
+  window.open("https://www.tiktok.com/@tryharddev3?lang=en")
+})
