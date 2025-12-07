@@ -15,39 +15,43 @@ But the truth waiting outside might be darker—and more real—than anything in
 
 A psychological mystery wrapped inside a survival escape story.
 Everything you see in the forest becomes symbolic as you learn the truth.
+<ul>
+<li>explore</li>
 
-explore
+<li>choose paths</li>
 
-choose paths
+<li>uncover memories</li>
 
-uncover memories
-
-find your way out
+<li>find your way out</li>
 
 Your decisions shape your route—but all roads lead to an unforgettable ending.
+</ul>
 
 # 🕹 Built With
 
-HTML
+<ul>
+<li>HTML</li>
 
-CSS
+<li>CSS</li>
 
-JavaScript
+<li>JavaScript</li>
 
-absolutely no frameworks 😎
+<li>absolutely no frameworks 😎</li>
+</ul>
 
-🎧 Features
+# 🎧 Features
+<ul>
+<li>ambient sound effects</li>
 
-ambient sound effects
+<li>minimal UI</li>
 
-minimal UI
+<li>four choices per scene</li>
 
-four choices per scene
+<li>hidden lore</li>
 
-hidden lore
+<li>creepy atmosphere</li>
+</ul>
 
-creepy atmosphere
-
-⚠️ Theme
+# ⚠️ Theme
 
 Memory loss, mystery, psychological horror, and suspense.
