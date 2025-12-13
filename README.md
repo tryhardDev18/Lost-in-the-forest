@@ -1,57 +1,135 @@
-# 🌲 Lost in the forest — Choice-Based Web Adventure
-
 Link: https://lostintheforest.netlify.app/<br>
 Make sure to play on a laptop or a pc :)<br>
 Im too lazy to optimize it for small screens :((<br>
 
-Lost in the forest is a choice-driven HTML/CSS/JavaScript story game where you wake up alone in a mysterious forest with no memory of who you are. Every scene gives you four choices that slowly uncover clues about your past while leading you deeper into the woods.
+---
 
-As you explore abandoned paths, hidden cabins, and strange noises in the trees, something begins following you… something that feels strangely familiar.
+# 🎮 Choice-Based Game Engine (JavaScript)
 
-The goal is simple: escape the forest.
-But the truth waiting outside might be darker—and more real—than anything inside.
+This project is a **lightweight, JavaScript-based choice-driven game engine** designed for creating interactive narrative games directly in the browser.
 
-# 🧠 What’s it about?
+The included forest story is **only a demo** to showcase how scenes, choices, audio, and progression work. The engine itself is flexible and can be reused to build entirely different stories with minimal changes.
 
-A psychological mystery wrapped inside a survival escape story.
-Everything you see in the forest becomes symbolic as you learn the truth.
-<ul>
-<li>explore</li>
+---
 
-<li>choose paths</li>
+## 🧠 What This Engine Does
 
-<li>uncover memories</li>
+The engine allows you to define a game using **scene objects**, each containing:
 
-<li>find your way out</li>
+* background image
+* narrative text
+* four player choices
+* scene transitions
+* sound effects
 
-Your decisions shape your route—but all roads lead to an unforgettable ending.
-</ul>
+All game logic is data-driven — adding or modifying a scene requires **no changes to the core engine code**.
 
-# 🕹 Built With
+---
 
-<ul>
-<li>HTML</li>
+## 🧱 Create Your Own Game
 
-<li>CSS</li>
+This engine is **story-agnostic**. To create your own game, you only need to define scenes — no changes to the engine core are required.
 
-<li>JavaScript</li>
+### 1️⃣ Define Scenes
 
-<li>absolutely no frameworks 😎</li>
-</ul>
+Games are built using a single `scenes` object. Each scene acts as a **node** in a scene graph.
 
-# 🎧 Features
-<ul>
-<li>ambient sound effects</li>
+```js
+const scenes = {
+  start: {
+    background: "forest",
+    text: "You wake up with no memory of how you got here.",
+    choices: [
+      { text: "Walk forward", next: "path" },
+      { text: "Look around", next: "clearing" },
+      { text: "Call out", next: "echo" },
+      { text: "Stay still", next: "silence" }
+    ]
+  }
+}
+```
 
-<li>minimal UI</li>
+## ⚙️ Core Features
 
-<li>four choices per scene</li>
+* Choice-based scene system (4 choices per scene)
+* Scene graph / branching logic
+* Typewriter text effect
+* Scene-based background rendering
+* Looping ambient SFX per scene
+* Click & hover sound triggers
+* Simple state handling
+* No external libraries or frameworks
 
-<li>hidden lore</li>
+---
 
-<li>creepy atmosphere</li>
-</ul>
+Each scene supports:
 
-# ⚠️ Theme
+* `background` → scene background asset
+* `text` → narrative content
+* `choices[]` → up to four selectable paths
+* `next` → target scene key
 
-Memory loss, mystery, psychological horror, and suspense.
+---
+
+## 🧩 Engine Structure
+
+* `scenes` object defines the entire game flow
+* `renderScene()` handles transitions and rendering
+* Choices automatically route to the next scene
+* Audio is managed per scene (looping & one-shot SFX)
+* Easily extendable with inventory, flags, or variables
+
+---
+
+## 🧪 Demo Story
+
+The demo game is a psychological mystery where the player wakes up in a forest with no memory.
+It exists purely to demonstrate:
+
+* branching paths
+* atmosphere control
+* narrative pacing
+* scene transitions
+
+You can replace it with your own story by editing the `scenes` object.
+
+---
+
+## 🛠 Built With
+
+* Vanilla JavaScript
+* HTML
+* CSS
+
+No frameworks. No engines. Just logic.
+
+---
+
+### 2️⃣ Scene Graph Logic
+
+Scenes connect by referencing each other through `next`.
+
+This creates:
+
+* linear paths
+* branching narratives
+* looping structures
+* soft-gated progression
+
+The engine resolves transitions automatically.
+
+---
+
+### 3️⃣ Rendering & Flow
+
+The engine handles:
+
+* background rendering
+* text typing effects
+* audio playback
+* button updates
+* scene transitions
+
+You only focus on **story structure**, not UI logic.
+
+---
